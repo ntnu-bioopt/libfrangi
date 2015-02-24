@@ -1,7 +1,7 @@
 libfrangi
 =========
 
-C++/OpenCV implementation of the Frangi multiscale vesselness filter (reference:
+C++/OpenCV implementation of the Frangi multiscale vesselness filter in 2D (reference:
 A. F. Frangi, W. J. Niessen, K. L. Vincken, and M. A. Viergever, “Multiscale vessel enhancement filtering,”
 in Proc. Med. Image. Comput. Assist. Interv. 1496, pp. 130–137 (1998)).
 
