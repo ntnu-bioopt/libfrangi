@@ -59,6 +59,8 @@ void frangi2d_createopts(frangi2d_opts_t *opts){
 
 	opts->BetaOne = 1.6; //ignore blob-like structures?
 	opts->BetaTwo = 0.08; //appropriate background suppression for this specific image, but can change. 
+
+	opts->BlackWhite = true; 
 }
 		
 void frangi2_eig2image(const Mat &Dxx, const Mat &Dxy, const Mat &Dyy, Mat &lambda1, Mat &lambda2, Mat &Ix, Mat &Iy){
@@ -135,7 +137,11 @@ void frangi2d(const Mat &src, Mat &maxVals, Mat &whatScale, Mat &outAngles, fran
 		exp(-S2/c, tmp2);
 	
 		Mat Ifiltered = tmp1.mul(Mat::ones(src.rows, src.cols, src.type()) - tmp2);
-		Ifiltered.setTo(0, lambda1 < 0);
+		if (opts.BlackWhite){
+			Ifiltered.setTo(0, lambda1 < 0);
+		} else {
+			Ifiltered.setTo(0, lambda1 > 0);
+		}
 
 		//store results
 		ALLfiltered.push_back(Ifiltered);

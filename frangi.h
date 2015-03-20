@@ -12,6 +12,8 @@ typedef struct{
 	//BetaTwo: background suppression. (See Frangi1998...)
 	float BetaOne;
 	float BetaTwo;
+
+	bool BlackWhite; //enhance black structures if true, otherwise enhance white structures
 } frangi2d_opts_t;
 
 
