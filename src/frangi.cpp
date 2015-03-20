@@ -53,14 +53,14 @@ void frangi2d_hessian(const Mat &src, Mat &Dxx, Mat &Dxy, Mat &Dyy, float sigma)
 
 void frangi2d_createopts(frangi2d_opts_t *opts){
 	//these parameters depend on the scale of the vessel, depending ultimately on the image size...
-	opts->sigma_start = 3;
-	opts->sigma_end = 7;
-	opts->sigma_step = 1;
+	opts->sigma_start = DEFAULT_SIGMA_START;
+	opts->sigma_end = DEFAULT_SIGMA_END;
+	opts->sigma_step = DEFAULT_SIGMA_STEP;
 
-	opts->BetaOne = 1.6; //ignore blob-like structures?
-	opts->BetaTwo = 0.08; //appropriate background suppression for this specific image, but can change. 
+	opts->BetaOne = DEFAULT_BETA_ONE; //ignore blob-like structures?
+	opts->BetaTwo = DEFAULT_BETA_TWO; //appropriate background suppression for this specific image, but can change. 
 
-	opts->BlackWhite = true; 
+	opts->BlackWhite = DEFAULT_BLACKWHITE; 
 }
 		
 void frangi2_eig2image(const Mat &Dxx, const Mat &Dxy, const Mat &Dyy, Mat &lambda1, Mat &lambda2, Mat &Ix, Mat &Iy){

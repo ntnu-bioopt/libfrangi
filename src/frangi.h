@@ -16,7 +16,12 @@ typedef struct{
 	bool BlackWhite; //enhance black structures if true, otherwise enhance white structures
 } frangi2d_opts_t;
 
-
+#define DEFAULT_SIGMA_START 3
+#define DEFAULT_SIGMA_END 7
+#define DEFAULT_SIGMA_STEP 1
+#define DEFAULT_BETA_ONE 1.6
+#define DEFAULT_BETA_TWO 0.08
+#define DEFAULT_BLACKWHITE true
 
 
 /////////////////
