@@ -91,8 +91,8 @@ void frangi2_eig2image(const Mat &Dxx, const Mat &Dxy, const Mat &Dyy, Mat &lamb
 
 	//sort eigenvalues by absolute value abs(Lambda1) < abs(Lamda2)
 	Mat check = abs(mu1) > abs(mu2);
-	mu1.copyTo(lambda2); mu2.copyTo(lambda2, check);
-	mu2.copyTo(lambda1); mu1.copyTo(lambda1, check);
+	mu1.copyTo(lambda1); mu2.copyTo(lambda1, check);
+	mu2.copyTo(lambda2); mu1.copyTo(lambda2, check);
 
 	v1x.copyTo(Ix); v2x.copyTo(Ix, check);
 	v1y.copyTo(Iy); v2y.copyTo(Iy, check);
@@ -126,8 +126,8 @@ void frangi2d(const Mat &src, Mat &maxVals, Mat &whatScale, Mat &outAngles, fran
 		ALLangles.push_back(angles);
 		
 		//compute some similarity measures
-		lambda1.setTo(nextafterf(0, 1), lambda1 == 0);
-		Mat Rb = lambda2.mul(1.0/lambda1);
+		lambda2.setTo(nextafterf(0, 1), lambda2 == 0);
+		Mat Rb = lambda1.mul(1.0/lambda2);
 		Rb = Rb.mul(Rb);
 		Mat S2 = lambda1.mul(lambda1) + lambda2.mul(lambda2);
 
@@ -138,9 +138,9 @@ void frangi2d(const Mat &src, Mat &maxVals, Mat &whatScale, Mat &outAngles, fran
 	
 		Mat Ifiltered = tmp1.mul(Mat::ones(src.rows, src.cols, src.type()) - tmp2);
 		if (opts.BlackWhite){
-			Ifiltered.setTo(0, lambda1 < 0);
+			Ifiltered.setTo(0, lambda2 < 0);
 		} else {
-			Ifiltered.setTo(0, lambda1 > 0);
+			Ifiltered.setTo(0, lambda2 > 0);
 		}
 
 		//store results
