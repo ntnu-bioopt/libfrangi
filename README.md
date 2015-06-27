@@ -15,15 +15,16 @@ to desired values or use `frangi2d_createopts(&opts)` for default values.
 
 Load the image into a `cv::Mat` instance. Create `cv::Mat` instances
 for Frangi filter outputs: `J`, `scale` and `directions`. The 2D Frangi
-filter can then be applied as `frangi2d(img, &J, &scale, &directions, opts)`.
+filter can then be applied as `frangi2d(img, J, scale, directions, opts)`.
 
 Building and installing
 -----------------------
 
 1. `mkdir build`
-2. `cmake ..`
-3. `make`
-4. `make install`
+2. `cd build`
+3. `cmake ..`
+4. `make`
+5. `make install`
 
 
 Requirements
