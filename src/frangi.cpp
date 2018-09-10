@@ -6,6 +6,7 @@ using namespace cv;
 
 void frangi2d_hessian(const Mat &src, Mat &Dxx, Mat &Dxy, Mat &Dyy, float sigma){
 	//construct Hessian kernels
+	float M_PI = 3.14;
 	int n_kern_x = 2*round(3*sigma) + 1;
 	int n_kern_y = n_kern_x;
 	float *kern_xx_f = new float[n_kern_x*n_kern_y]();
